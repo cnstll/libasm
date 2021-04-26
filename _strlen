@@ -1,0 +1,37 @@
+;ft_strlen return the length of a string passed in parameter
+;data_types
+;Byte - 8bits
+;Word - 16bits
+;Double Word - 32bits
+;Quad Word - 64bits
+;Thes datatypes can be associated with the prefix 'd' for declared and initialized variable
+;and 'res' for allocating memory to a variable.
+
+
+section .data
+string	db 'hello WORLD',0xa
+len		dd	0
+
+
+section .text
+	global _start;
+_start:
+mov		ebx, string
+mov		eax, ebx
+loop:
+	cmp		byte [eax], 0
+	jz		done
+	inc		eax
+	jmp		loop
+done:
+	sub		eax, ebx
+
+add		[len], eax
+mov		edx, 2
+mov		ecx, [len]
+mov		ebx, 1
+mov		eax, 4
+int		0x80
+mov		ebx,0						;return '0' status exit, i.e zero error
+mov		eax,1						;sys_call exit
+int		0x80						;call kernel
