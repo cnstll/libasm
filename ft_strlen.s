@@ -5,16 +5,14 @@ SECTION .text
 ft_strlen:
 	push	rbp
 	mov		rbp, rsp
-	push	rbx
-	mov		rax, rbx
+	mov		rax, rdi
 	loop:
 		cmp		byte [rax], 0
 		jz		done
 		inc		rax
 		jmp		loop
 	done:
-		sub		rax, rbx
-		pop		rbx
+		sub		rax, rdi
 		mov		rsp, rbp
 		pop		rbp
 		ret
