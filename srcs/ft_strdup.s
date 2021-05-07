@@ -1,4 +1,4 @@
-;char *strdup(const char *s)
+;char *ft_strdup(const char *s)
 
 extern malloc
 extern __errno_location
