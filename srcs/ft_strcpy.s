@@ -14,13 +14,12 @@ ft_strcpy:
 	mov		rcx, 0
 	loop:
 		mov		bl, BYTE [rsi + rcx]
+		mov		BYTE [rdi + rcx], bl
 		cmp		bl, 0
 		jz		done
-		mov		BYTE [rdi + rcx], bl
 		inc		rcx
 		jmp		loop
 	done:
-		mov		BYTE [rdi + rcx], bl
 		mov		rax, rdi
 		;epilogue
 		pop		rbx
