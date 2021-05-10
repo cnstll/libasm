@@ -12,13 +12,12 @@ ft_strdup:
 	;prologue
 	push	rbp
 	mov		rbp, rsp
-	push	rbx
 	mov		r8, rdi
 
 	get_len:
 		call	ft_strlen
-		inc		rax
 		mov		rdi, rax
+		inc		rdi
 	malloc_mem:
 		call	malloc
 		cmp		rax, 0			;testing for error
@@ -27,9 +26,9 @@ ft_strdup:
 		mov		rdi, rax
 		mov		rsi, r8
 		call	ft_strcpy
+		jmp		return
 	return:
 	;epilogue
-	pop		rbx
 	mov		rsp, rbp
 	pop		rbp
 	ret
